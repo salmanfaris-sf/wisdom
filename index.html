@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salman Faris - Aspiring Web Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    
+    <meta name="theme-color" id="theme-color-meta" content="#f8fafc">
+
+    <style>
+        /* Define the new primary accent color: Maroon/Burgundy (Tailwind Red-700) for LIGHT MODE */
+        :root {
+            --color-accent: #b91c1c; /* Maroon/Red-700 */
+        }
+
+        /* Base styles are theme-dependent and set by JS/Tailwind classes on the body */
+        body {
+            /* Changed to Professional Sans-serif for readability (Inter) */
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+            /* Shorter body transition, as the elements will handle the visual flow with delays */
+            transition: background-color 0.4s ease-in-out, color 0.4s ease-in-out; 
+        }
+        
+        /* New class to apply the luxury serif font to headings and classy elements */
+        .font-luxury-serif {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* NEW: Master transition class for all elements that need to smoothly change theme colors */
+        .theme-transition-element {
+            /* Use a long, smooth transition with an organic cubic-bezier curve */
+            transition: color 1.0s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+                        background-color 1.0s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+                        border-color 1.0s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                        box-shadow 1.0s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        /* Staggering the transitions to create the ripple effect (Header -> Main -> Footer) */
+        .delay-0 { transition-delay: 0s; }
+        .delay-150 { transition-delay: 0.15s; }
+        .delay-300 { transition-delay: 0.30s; }
+
+
+        /* Dark Mode Styles (Pure Black background) */
+        body.theme-dark {
+            background-color: #000000; /* Pure black */
+            color: #e2e8f0; /* Slate-200: Light Text */
+            /* NEW: Dark Green Accent (Emerald-700) */
+            --color-accent-secondary: #047857; 
+        }
+        body.theme-dark .text-primary-header { color: #ffffff; }
+        body.theme-dark .text-secondary-p { color: #94a3b8; /* Slate-400 */ }
+        
+        /* --- DYNAMIC HEADER STYLES (DARK MODE) --- */
+        /* Logo (Salmanfaris) - White */
+        body.theme-dark .text-logo-primary { color: #ffffff; }
+        body.theme-dark .text-logo-primary:hover { color: #d1d5db; } /* gray-300 */
+        /* Theme Toggle Button - Subtle White */
+        body.theme-dark .toggle-button-style {
+            background-color: rgba(255, 255, 255, 0.1); 
+            color: #ffffff;
+        }
+        body.theme-dark .toggle-button-style:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+        /* Header Border - Subtle White */
+        body.theme-dark .border-primary { border-color: rgba(255, 255, 255, 0.1); } 
+        /* ----------------------------------------- */
+        
+        /* --- DARK MODE ACCENT OVERRIDES (Red -> Green) --- */
+        /* Target all icons and borders using the original red-700 class */
+        body.theme-dark .text-red-700 { color: var(--color-accent-secondary) !important; }
+        body.theme-dark .border-red-700 { border-color: var(--color-accent-secondary) !important; }
+
+        /* CTA Button override */
+        body.theme-dark .bg-red-700 { background-color: var(--color-accent-secondary) !important; }
+        body.theme-dark .bg-red-700:hover { background-color: #03543d !important; /* Darker green for hover */ }
+        /* ------------------------------------------------ */
+
+        
+        /* New: Stylish radial gradient background glow for the whole app in dark mode */
+        body.theme-dark::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            /* Updated RGBA for Dark Green */
+            background: radial-gradient(circle at 10% 90%, rgba(4, 120, 87, 0.08) 0%, transparent 40%),
+                        radial-gradient(circle at 90% 10%, rgba(4, 120, 87, 0.08) 0%, transparent 40%);
+            z-index: -1;
+        }
+
+        /* Header backdrop styles */
+        body.theme-dark .bg-header { 
+            background-color: rgba(0, 0, 0, 0.05);
+            backdrop-filter: blur(3px);
+            -webkit-backdrop-filter: blur(3px);
+        }
+        
+        /* Refined Card Look for Dark Mode (Updating border colors to Green RGBA) */
+        body.theme-dark .bg-card { 
+            background-color: #1a1a1a;
+            border: 1px solid rgba(4, 120, 87, 0.2);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4), 0 10px 20px rgba(0, 0, 0, 0.4);
+        }
+        
+        body.theme-dark .bg-sub-card { 
+            background-color: #222222;
+            border: 1px solid rgba(4, 120, 87, 0.2);
+        }
+        
+        /* Update Shadow Accents to Dark Green RGBA */
+        body.theme-dark .shadow-accent { 
+            box-shadow: 0 10px 20px -3px rgba(4, 120, 87, 0.4), 0 4px 6px -2px rgba(4, 120, 87, 0.2); 
+        }
+
+        
+        /* Light Mode Styles (Monochrome Gray with Maroon Accent) */
+        body.theme-light {
+            background-color: #f8fafc; /* Slate-50: Very Light Gray */
+            color: #1e293b; /* Slate-800: Dark Gray */
+        }
+        body.theme-light .text-primary-header { color: #1e293b; }
+        body.theme-light .text-secondary-p { color: #64748b; /* Slate-500 */ }
+        
+        /* --- DYNAMIC HEADER STYLES (LIGHT MODE - Uses original maroon) --- */
+        /* Logo (Salmanfaris) - Maroon */
+        body.theme-light .text-logo-primary { color: var(--color-accent); }
+        body.theme-light .text-logo-primary:hover { color: #991b1b; } /* red-800 */
+        /* Theme Toggle Button - Maroon Accent */
+        body.theme-light .toggle-button-style {
+            background-color: rgba(185, 28, 28, 0.1); /* red-700/10 */
+            color: var(--color-accent); /* Maroon */
+        }
+        body.theme-light .toggle-button-style:hover {
+            background-color: rgba(185, 28, 28, 0.3); /* red-700/30 */
+        }
+        /* Header Border - Default Light */
+        body.theme-light .border-primary { border-color: #e2e8f0; /* Slate-200 border */ }
+        /* ----------------------------------------- */
+        
+        /* Header backdrop styles */
+        body.theme-light .bg-header { 
+            background-color: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(3px);
+            -webkit-backdrop-filter: blur(3px);
+        }
+        
+        body.theme-light .bg-card { background-color: #ffffff; }
+        body.theme-light .bg-sub-card { background-color: #f0f4f8; /* Very Light Gray for skill */ }
+        body.theme-light .shadow-accent { 
+            box-shadow: 0 10px 15px -3px rgba(185, 28, 28, 0.1), 0 4px 6px -2px rgba(185, 28, 28, 0.05); 
+        }
+
+        /* Custom animation for the CTA button shadow pulse */
+        @keyframes pulse-shadow {
+            /* Updated RGBA for Dark Green in Dark Mode, Maroon in Light Mode */
+            0% { box-shadow: 0 0 0 0 var(--shadow-pulse-color, rgba(185, 28, 28, 0.7)); }
+            70% { box-shadow: 0 0 0 10px var(--shadow-pulse-color, rgba(185, 28, 28, 0)); }
+            100% { box-shadow: 0 0 0 0 var(--shadow-pulse-color, rgba(185, 28, 28, 0)); }
+        }
+        /* New definition for dark mode pulse color */
+        body.theme-dark .cta-pulse {
+            --shadow-pulse-color: rgba(4, 120, 87, 0.7);
+        }
+        .cta-pulse:hover {
+            animation: pulse-shadow 1.5s infinite;
+        }
+        
+        /* Dynamic hover effect for focus cards (Updating shadow to Green RGBA in Dark Mode) */
+        .focus-card:hover {
+            transform: translateY(-4px) rotateZ(0.5deg); /* Lift and subtle tilt */
+            box-shadow: 0 15px 30px rgba(185, 28, 28, 0.3); /* Default Maroon shadow for Light Mode */
+        }
+        body.theme-dark .focus-card:hover {
+             /* Stronger shadow using Dark Green RGBA for Dark Mode */
+            box-shadow: 0 15px 30px rgba(4, 120, 87, 0.3); 
+        }
+
+        /* Custom scrollbar styling */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-thumb { background: var(--color-accent); border-radius: 4px; }
+        body.theme-dark ::-webkit-scrollbar-thumb { background: var(--color-accent-secondary); } /* Use Dark Green */
+        body.theme-dark ::-webkit-scrollbar-track { background: #000000; }
+    </style>
+</head>
+<body class="selection:bg-red-700 selection:text-white theme-light">
+
+    <header class="sticky top-0 z-50 border-b bg-header border-primary theme-transition-element delay-0" id="header-nav">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <a href="#home" class="text-2xl font-extrabold text-logo-primary theme-transition-element transition duration-300 font-luxury-serif">
+                Salmanfaris
+            </a>
+            <div class="flex items-center space-x-6 text-sm font-medium">
+                <button id="theme-toggle" class="p-2 rounded-full toggle-button-style theme-transition-element transition duration-200" aria-label="Toggle theme mode">
+                    <i data-lucide="sun" class="w-5 h-5" id="theme-icon"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-24 theme-transition-element delay-150">
+
+        <section id="home" class="min-h-[70vh] flex items-center mb-24 text-center">
+            <div class="max-w-4xl mx-auto">
+                
+                <h1 class="text-6xl sm:text-7xl lg:text-8xl font-black leading-tight text-primary-header theme-transition-element mb-6 font-luxury-serif">
+                   Hello, I am Aspiring Web Developer.
+                </h1>
+                
+                <h2 class="text-4xl sm:text-5xl lg:text-6xl font-light text-secondary-p theme-transition-element mb-8 opacity-75 font-luxury-serif">
+                    Learning to build the web applications.
+                </h2>
+                <p class="text-lg text-secondary-p theme-transition-element max-w-2xl mx-auto">
+                    I am focused on learning how to build web applications from start to finish. This involves setting up data storage (MongoDB), creating reliable connections (Express/Node.js), and designing modern user screens (React). I'm excited to put the JavaScript ecosystem to work!
+                </p>
+                <!-- Removed the "See What I'm Learning" button -->
+            </div>
+        </section>
+
+        <section id="about" class="pt-16 pb-20 border-t border-primary theme-transition-element">
+            <h3 class="text-4xl font-bold text-primary-header theme-transition-element mb-12 text-center font-luxury-serif">My Learning Journey into Web Development</h3>
+            <div class="bg-card theme-transition-element p-8 sm:p-12 rounded-xl shadow-2xl shadow-accent/10 border border-primary grid md:grid-cols-1 gap-10 items-center">
+                
+                <div>
+                    <p class="text-secondary-p theme-transition-element text-lg mb-6 leading-relaxed">
+                        I am currently starting my journey into Web Development. I am passionate about building things that people can use online, from the visible screen (React) to the data storage (MongoDB).
+                    </p>
+                    <p class="text-secondary-p theme-transition-element text-lg leading-relaxed">
+                        My goal is to write clear, organized code and deeply understand how the pieces fit together.
+                    </p>
+                </div>
+                </div>
+        </section>
+
+        <section id="focus-areas" class="pt-20 pb-20 border-t border-primary theme-transition-element">
+            <h3 class="text-4xl font-bold text-primary-header theme-transition-element mb-10 text-center font-luxury-serif">Core Tools I Am Focusing On</h3>
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
+
+                <div class="bg-sub-card p-6 rounded-xl shadow-lg border-red-700/30 theme-transition-element transition duration-300 focus-card">
+                    <i data-lucide="component" class="w-8 h-8 text-red-700 mb-3"></i>
+                    <h4 class="text-xl font-semibold text-primary-header theme-transition-element mb-1">React (Frontend)</h4>
+                    <p class="text-sm text-secondary-p theme-transition-element">Building reusable pieces (components) for dynamic and modern websites.</p>
+                </div>
+
+                <div class="bg-sub-card p-6 rounded-xl shadow-lg border-red-700/30 theme-transition-element transition duration-300 focus-card">
+                    <i data-lucide="database" class="w-8 h-8 text-red-700 mb-3"></i>
+                    <h4 class="text-xl font-semibold text-primary-header theme-transition-element mb-1">MongoDB (Database)</h4>
+                    <p class="text-sm text-secondary-p theme-transition-element">Learning how to store data efficiently using a flexible, non-SQL format.</p>
+                </div>
+
+                <div class="bg-sub-card p-6 rounded-xl shadow-lg border-red-700/30 theme-transition-element transition duration-300 focus-card">
+                    <i data-lucide="server" class="w-8 h-8 text-red-700 mb-3"></i>
+                    <h4 class="text-xl font-semibold text-primary-header theme-transition-element mb-1">Node/Express (Backend)</h4>
+                    <p class="text-sm text-secondary-p theme-transition-element">Creating the "brain" of the app—building reliable connections (APIs) to handle data.</p>
+                </div>
+
+                <div class="bg-sub-card p-6 rounded-xl shadow-lg border-red-700/30 theme-transition-element transition duration-300 focus-card">
+                    <i data-lucide="file-code" class="w-8 h-8 text-red-700 mb-3"></i>
+                    <h4 class="text-xl font-semibold text-primary-header theme-transition-element mb-1">JS Proficiency</h4>
+                    <p class="text-sm text-secondary-p theme-transition-element">Learning modern JavaScript features and practicing coding fundamentals.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-card py-8 border-t border-primary theme-transition-element delay-300">
+        <div class="max-w-7xl mx-auto px-4 text-center text-secondary-p theme-transition-element text-sm">
+            &copy; 2025 Salman Faris. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        const body = document.body;
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        // NEW: Get the meta tag element
+        const themeColorMeta = document.getElementById('theme-color-meta');
+
+        /**
+         * Initializes the theme based on local storage or system preference.
+         */
+        function initializeTheme() {
+            // Check local storage for theme preference
+            const savedTheme = localStorage.getItem('theme');
+            // UPDATED: Defaulting to Light Mode
+            let initialTheme = 'light'; 
+
+            if (savedTheme) {
+                initialTheme = savedTheme;
+            } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+                // Check system preference. If it's light, we use light.
+                initialTheme = 'light'; 
+            } else {
+                 // If no saved theme and system preference is dark or unknown, use light mode default
+                 initialTheme = 'light';
+            }
+
+            setTheme(initialTheme, false);
+        }
+
+        /**
+         * Sets the body class, icon, and saves the theme to local storage.
+         * @param {string} theme - 'dark' or 'light'
+         * @param {boolean} save - Whether to save the preference to local storage
+         */
+        function setTheme(theme, save = true) {
+            // 1. Update body class and Theme Toggle label
+            if (theme === 'dark') {
+                body.classList.remove('theme-light');
+                body.classList.add('theme-dark');
+                themeToggle.setAttribute('aria-label', 'Switch to Light Mode');
+                // NEW: Set address bar color to pure black
+                if (themeColorMeta) {
+                    themeColorMeta.setAttribute('content', '#000000'); 
+                }
+            } else {
+                body.classList.remove('theme-dark');
+                body.classList.add('theme-light');
+                themeToggle.setAttribute('aria-label', 'Switch to Dark Mode');
+                // NEW: Set address bar color to very light gray/white
+                if (themeColorMeta) {
+                    themeColorMeta.setAttribute('content', '#f8fafc'); 
+                }
+            }
+
+            // 2. Update icon (using Lucide icons)
+            if (themeIcon) {
+                themeIcon.setAttribute('data-lucide', theme === 'dark' ? 'sun' : 'moon');
+                lucide.createIcons();
+            }
+
+            // 3. Save preference
+            if (save) {
+                localStorage.setItem('theme', theme);
+            }
+        }
+
+        /**
+         * Toggles between dark and light themes.
+         */
+        function toggleTheme() {
+            const currentTheme = body.classList.contains('theme-dark') ? 'dark' : 'light';
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            setTheme(newTheme, true);
+        }
+
+        // --- Event Listeners and Initialization ---
+
+        // Initialize icons (must be run before setting the initial icon)
+        lucide.createIcons();
+
+        // Initialize theme on page load
+        initializeTheme();
+
+        // Add click listener to the toggle button
+        themeToggle.addEventListener('click', toggleTheme);
+    </script>
+</body>
+</html>
+
