@@ -1,2 +1,459 @@
-<!DOCTYPE html> <html lang="en"> <head> <script async src="https://www.googletagmanager.com/gtag/js?id=G-1K1TKBQFFK"></script> <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-1K1TKBQFFK');</script> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"> <meta name="theme-color" content="#000000"> <title>Dhikr Counter</title> <style>:root{--bg:#000;--tx:#fff;--s1:rgba(255,255,255,.7);--s2:rgba(255,255,255,.7);--s3:rgba(255,255,255,.7);--modal:#1a1a1a;--bd:rgba(255,255,255,.15)}body.light{--bg:#fff;--tx:#000;--s1:rgba(0,0,0,.7);--s2:rgba(0,0,0,.7);--s3:rgba(0,0,0,.7);--modal:#f0f0f0;--bd:rgba(0,0,0,.1)}*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}body{background-color:var(--bg);color:var(--tx);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;height:100vh;width:100vw;overflow:hidden;display:flex;flex-direction:column;justify-content:center;align-items:center;cursor:pointer;user-select:none;touch-action:none;position:relative;transition:background .4s,color .4s}._k8{position:fixed;top:20px;right:20px;display:flex;gap:12px;z-index:2000;transition:opacity .4s}._k8 button{background:none;border:1px solid var(--bd);color:var(--s1);padding:10px;border-radius:50px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s,border-color .2s}._k8 button:active{background:var(--bd);border-color:var(--s1)}._p1{display:flex;flex-direction:column;align-items:center;justify-content:center;flex-grow:1;width:100%;pointer-events:none}._r2{font-size:18vw;line-height:1;text-align:center;padding:0 10px;cursor:pointer;pointer-events:auto;outline:none;word-break:break-all;max-width:100%;transition:font-weight .2s}._r2[contenteditable="true"]{border:none;outline:none;-webkit-user-modify:read-write-plaintext-only}._t3{font-size:1.1rem;font-weight:400;color:var(--s3);margin-top:20px;transition:opacity .4s}._l4{position:fixed;bottom:30px;left:0;width:100%;text-align:center;font-size:.75rem;font-weight:500;letter-spacing:.05rem;text-transform:uppercase;color:var(--s3);pointer-events:none;display:flex;justify-content:center;gap:15px;padding:0 20px;flex-wrap:wrap;transition:opacity .4s}._m5{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0);display:none;justify-content:center;align-items:center;z-index:3000;transition:background .3s ease;pointer-events:none}._m5._active{display:flex;background:rgba(0,0,0,.85);pointer-events:auto}._w6{background:var(--modal);padding:24px;border-radius:12px;width:82%;max-width:300px;border:none;transform:scale(0.9);opacity:0;transition:transform .3s ease,opacity .3s ease}._active ._w6{transform:scale(1);opacity:1}._w6 p{font-size:1.1rem;font-weight:400;color:var(--tx);margin-bottom:28px;text-align:left}._j7{display:flex;justify-content:flex-end;gap:8px}._j7 button{background:none;border:none;color:var(--s1);font-size:.9rem;font-weight:500;cursor:pointer;padding:8px 16px;text-transform:uppercase;letter-spacing:0.03rem}._x0{color:#ff453a!important;font-weight:600!important}._n9{position:fixed;top:40px;left:50%;transform:translateX(-50%);background:rgba(255,255,255,0.15);backdrop-filter:blur(10px);padding:10px 20px;border-radius:30px;font-size:.85rem;font-weight:400;opacity:0;transition:opacity .4s,top .4s;pointer-events:none;z-index:2000;border:1px solid rgba(255,255,255,.1);width:auto;max-width:85%;display:inline-block;text-align:center;line-height:1.4;white-space:normal}body._f1 ._l4,body._f1 ._k8,body._f1 ._t3,body._e2 ._l4,body._e2 ._k8,body._e2 ._t3,body._h3 ._t3{opacity:0;pointer-events:none}</style> </head> <body> <div class="_k8"> <button id="_tm"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M19.78 4.22l1.42-1.42"/></svg></button> <button id="_b0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg></button> </div> <div id="_n0" class="_n9"></div> <div class="_p1"><div id="_c0" class="_r2" contenteditable="false" inputmode="numeric">0</div><div id="_h0" class="_t3">Tap anywhere to count</div></div> <div id="_g0" class="_l4"><span>Swipe Up: Edit</span><span>Swipe Down: -1</span><span>Swipe Left: Reset</span><span>Swipe Right: Thickness</span></div> <div id="_o0" class="_m5"><div class="_w6"><p>Reset counter to 0?</p><div class="_j7"><button onclick="_z0()">Cancel</button><button class="_x0" onclick="_y0()">Reset</button></div></div></div> <script>(function(){const a=document.getElementById('_c0'),b=document.getElementById('_o0'),c=document.getElementById('_b0'),v=document.getElementById('_tm');let d=parseInt(localStorage.getItem('_q'))||0,e=!1,f=localStorage.getItem('_w')==='true',g=0,h=0,m=localStorage.getItem('_th')==='light';function i(){a.textContent=d.toLocaleString('en-US');a.style.fontWeight=f?'700':'100';localStorage.setItem('_q',d);localStorage.setItem('_w',f);if(m)document.body.classList.add('light');else document.body.classList.remove('light')}function j(k){k.contentEditable="true";k.focus();const l=document.createRange(),m=window.getSelection();l.selectNodeContents(k);l.collapse(!1);m.removeAllRanges();m.addRange(l)}window._u0=function(){b.style.display='flex';setTimeout(()=>b.classList.add('_active'),10)};window._z0=function(){b.classList.remove('_active');setTimeout(()=>{b.style.display='none'},300)};window._y0=function(){d=0;i();_z0()};a.addEventListener('keydown',(n)=>{if(n.key==='Enter'){n.preventDefault();a.blur()}});document.body.addEventListener('touchstart',(o)=>{if(o.target.closest('._k8')||o.target.closest('._w6'))return;g=o.touches[0].clientX;h=o.touches[0].clientY},{passive:!1});document.body.addEventListener('touchend',(p)=>{if(p.target.closest('._k8')||p.target.closest('._w6'))return;if(a.contentEditable==="true"||b.classList.contains('_active'))return;const q=g-p.changedTouches[0].clientX,r=h-p.changedTouches[0].clientY;if(Math.abs(q)<10&&Math.abs(r)<10){if(!e){e=!0;document.body.classList.add('_h3')}d++;i()}else if(Math.abs(q)>Math.abs(r)){if(q>50)_u0();else if(q<-50){f=!f;i()}}else{if(r>50){document.body.classList.add('_e2');setTimeout(()=>j(a),50)}else if(r<-50){if(d>0)d--;i()}}});c.onclick=(s)=>{s.stopPropagation();if(!document.fullscreenElement)document.documentElement.requestFullscreen();else document.exitFullscreen()};v.onclick=(s)=>{s.stopPropagation();m=!m;localStorage.setItem('_th',m?'light':'dark');i()};a.onblur=()=>{a.contentEditable="false";document.body.classList.remove('_e2');let t=a.textContent.replace(/[^\d]/g,'');d=t===''?0:parseInt(t);i()};document.addEventListener('fullscreenchange',()=>{if(document.fullscreenElement)document.body.classList.add('_f1');else document.body.classList.remove('_f1')});i()})()</script> </body> </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1K1TKBQFFK"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-1K1TKBQFFK');</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="theme-color" content="#000000">
+    <title>Dhikr Counter</title>
+    <style>
+        :root {
+            --bg: #000;
+            --tx: #fff;
+            --s1: rgba(255, 255, 255, .7);
+            --s2: rgba(255, 255, 255, 1);
+            --s3: rgba(255, 255, 255, .7);
+            --mo: #1c1c1e;
+            --bd: rgba(255, 255, 255, .15)
+        }
+
+        body.light {
+            --bg: #fff;
+            --tx: #000;
+            --s1: rgba(0, 0, 0, .7);
+            --s2: rgba(0, 0, 0, 1);
+            --s3: rgba(0, 0, 0, .7);
+            --mo: #f2f2f7;
+            --bd: rgba(0, 0, 0, .1)
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--tx);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+            touch-action: none;
+            position: relative;
+            transition: background .4s, color .4s
+        }
+
+        ._h_l {
+            position: fixed;
+            top: 34px; /* Lowered slightly from 30px */
+            left: 25px;
+            font-size: 0.75rem;
+            letter-spacing: 0.15rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: var(--s2);
+            z-index: 1500;
+            transition: opacity 0.4s;
+        }
+
+        ._x84s {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 12px;
+            z-index: 2000;
+            transition: opacity .4s
+        }
+
+        ._x84s button {
+            background: none;
+            border: none;
+            color: var(--s1);
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background .2s;
+            width: 44px;
+            height: 44px;
+            aspect-ratio: 1/1
+        }
+
+        ._x84s button:active {
+            background: var(--bd)
+        }
+
+        ._q92p {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            flex-grow: 1;
+            width: 100%;
+            pointer-events: none
+        }
+
+        ._z11k {
+            font-size: 18vw;
+            line-height: 1;
+            text-align: center;
+            padding: 0 10px;
+            cursor: pointer;
+            pointer-events: auto;
+            outline: none;
+            word-break: break-all;
+            max-width: 100%;
+            transition: font-weight .2s
+        }
+
+        ._z11k[contenteditable="true"] {
+            border: none;
+            outline: none;
+            -webkit-user-modify: read-write-plaintext-only
+        }
+
+        ._m33r {
+            font-size: 1rem;
+            letter-spacing: .05rem;
+            text-transform: uppercase;
+            font-weight: 500;
+            color: var(--s2);
+            margin-top: 25px;
+            transition: opacity .4s
+        }
+
+        ._v55t {
+            position: fixed;
+            bottom: 30px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            font-size: .7rem;
+            letter-spacing: .08rem;
+            text-transform: uppercase;
+            color: var(--s3);
+            pointer-events: none;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            padding: 0 20px;
+            flex-wrap: wrap;
+            transition: opacity .4s
+        }
+
+        ._o77x {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 3000;
+            transition: background .3s ease;
+            pointer-events: none
+        }
+
+        ._o77x._active {
+            display: flex;
+            background: rgba(0, 0, 0, .6);
+            pointer-events: auto
+        }
+
+        ._c88n {
+            background: var(--mo);
+            padding: 24px 24px;
+            border-radius: 12px;
+            width: 85%;
+            max-width: 300px;
+            border: none;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            transform: scale(0.85);
+            opacity: 0;
+            transition: transform .4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity .3s ease
+        }
+
+        ._active ._c88n {
+            transform: scale(1);
+            opacity: 1
+        }
+
+        ._c88n h2 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--tx);
+            margin-bottom: 20px;
+            text-align: left;
+            letter-spacing: -0.02em
+        }
+
+        ._b99m {
+            display: flex;
+            justify-content: flex-end;
+            gap: 8px
+        }
+
+        ._b99m button {
+            background: none;
+            border: none;
+            color: var(--s1);
+            font-size: 0.85rem;
+            font-weight: 700;
+            cursor: pointer;
+            padding: 8px 12px;
+            border-radius: 10px;
+            transition: opacity .2s;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            outline: none;
+        }
+
+        ._b99m button:active {
+            opacity: 0.5
+        }
+
+        ._f00d {
+            color: #ff453a !important
+        }
+
+        ._ntf {
+            position: fixed;
+            top: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 400;
+            opacity: 0;
+            transition: opacity 0.4s, top 0.4s;
+            pointer-events: none;
+            z-index: 2000;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            width: auto;
+            max-width: 85%;
+            display: inline-block;
+            text-align: center;
+            line-height: 1.4;
+            white-space: normal
+        }
+
+        body._fs_m ._v55t,
+        body._fs_m ._x84s,
+        body._fs_m ._m33r,
+        body._fs_m ._h_l,
+        body._ed_m ._v55t,
+        body._ed_m ._x84s,
+        body._ed_m ._m33r,
+        body._ed_m ._h_l,
+        body._tp_m ._m33r {
+            opacity: 0;
+            pointer-events: none
+        }
+    </style>
+</head>
+<body>
+    <div class="_h_l">Counter</div>
+    <div class="_x84s">
+        <button id="_tm"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M19.78 4.22l1.42-1.42"/></svg></button>
+        <button id="_b1"><svg id="_s1" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg></button>
+    </div>
+    <div id="_nf" class="_ntf"></div>
+    <div class="_q92p">
+        <div id="_ct" class="_z11k" contenteditable="false" inputmode="numeric">0</div>
+        <div id="_ht" class="_m33r">Tap anywhere to count</div>
+    </div>
+    <div id="_lg" class="_v55t">
+        <span>Swipe Up: Edit</span>
+        <span>Swipe Down: -1</span>
+        <span>Swipe Left: Reset</span>
+        <span>Swipe Right: Thickness</span>
+        <span>Long Press: Tap Sound On/Off</span>
+    </div>
+    <div id="_ov" class="_o77x">
+        <div class="_c88n">
+            <h2>reset counter to 0?</h2>
+            <div class="_b99m">
+                <button onclick="_cl()">Cancel</button>
+                <button class="_f00d" onclick="_cf()">Reset</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        (function() {
+            const c = document.getElementById('_ct'),
+                v = document.getElementById('_ov'),
+                s = document.getElementById('_s1'),
+                b = document.getElementById('_b1'),
+                t = document.getElementById('_tm'),
+                nf = document.getElementById('_nf');
+            let n = parseInt(localStorage.getItem('_nc')) || 0,
+                h = !1,
+                w = localStorage.getItem('_nb') === 'true',
+                m = localStorage.getItem('_ms') !== null ? localStorage.getItem('_ms') === 'true' : true,
+                th = localStorage.getItem('_th') === 'light',
+                x = 0,
+                y = 0,
+                lt = 0,
+                to = null;
+            const a = new(window.AudioContext || window.webkitAudioContext)();
+
+            function p() {
+                if (m) return;
+                const o = a.createOscillator(),
+                    g = a.createGain(),
+                    f = a.createBiquadFilter();
+                o.type = 'triangle';
+                o.frequency.setValueAtTime(600, a.currentTime);
+                o.frequency.exponentialRampToValueAtTime(300, a.currentTime + 0.05);
+                f.type = 'bandpass';
+                f.frequency.value = 800;
+                f.Q.value = 1;
+                g.gain.setValueAtTime(0.2, a.currentTime);
+                g.gain.exponentialRampToValueAtTime(0.001, a.currentTime + 0.05);
+                o.connect(f);
+                f.connect(g);
+                g.connect(a.destination);
+                o.start();
+                o.stop(a.currentTime + 0.05)
+            }
+
+            function u() {
+                c.textContent = n.toLocaleString('en-US');
+                const g = w ? '700' : '100';
+                c.style.fontWeight = g;
+                localStorage.setItem('_nc', n);
+                localStorage.setItem('_nb', w);
+                localStorage.setItem('_ms', m);
+                if (th) document.body.classList.add('light');
+                else document.body.classList.remove('light')
+            }
+
+            function f(e) {
+                e.contentEditable = "true";
+                e.focus();
+                const r = document.createRange(),
+                    l = window.getSelection();
+                r.selectNodeContents(e);
+                r.collapse(!1);
+                l.removeAllRanges();
+                l.addRange(r)
+            }
+
+            function sn(t) {
+                nf.textContent = t;
+                nf.style.opacity = 1;
+                setTimeout(() => nf.style.opacity = 0, 5000)
+            }
+            window._cl = function() {
+                v.classList.remove('_active');
+                setTimeout(() => {
+                    v.style.display = 'none'
+                }, 300)
+            };
+            window._cf = function() {
+                n = 0;
+                u();
+                _cl()
+            };
+            c.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    c.blur()
+                }
+            });
+            document.body.addEventListener('touchstart', (e) => {
+                if (e.target.closest('._x84s') || e.target.closest('._c88n')) return;
+                x = e.touches[0].clientX;
+                y = e.touches[0].clientY;
+                lt = Date.now();
+                if (a.state === 'suspended') a.resume();
+                to = setTimeout(() => {
+                    m = !m;
+                    u();
+                    sn(m ? "Tap Sound Off" : "Tap Sound On. increase phone volume to hear sound when you tap.");
+                    to = null
+                }, 800)
+            }, {
+                passive: !1
+            });
+            document.body.addEventListener('touchend', (e) => {
+                if (e.target.closest('._x84s') || e.target.closest('._c88n')) return;
+                if (to) {
+                    clearTimeout(to);
+                    to = null
+                }
+                if (c.contentEditable === "true" || v.classList.contains('_active')) return;
+                const dX = x - e.changedTouches[0].clientX,
+                    dY = y - e.changedTouches[0].clientY;
+                if (Math.abs(dX) < 10 && Math.abs(dY) < 10) {
+                    if (!h) {
+                        h = !0;
+                        document.body.classList.add('_tp_m')
+                    }
+                    p();
+                    n++;
+                    u()
+                } else if (Math.abs(dX) > Math.abs(dY)) {
+                    if (dX > 50) {
+                        v.style.display = 'flex';
+                        setTimeout(() => v.classList.add('_active'), 10);
+                    } else if (dX < -50) {
+                        w = !w;
+                        u()
+                    }
+                } else {
+                    if (dY > 50) {
+                        document.body.classList.add('_ed_m');
+                        setTimeout(() => f(c), 50)
+                    } else if (dY < -50) {
+                        if (n > 0) n--;
+                        u()
+                    }
+                }
+            });
+            b.onclick = (e) => {
+                e.stopPropagation();
+                if (!document.fullscreenElement) document.documentElement.requestFullscreen();
+                else document.exitFullscreen()
+            };
+            t.onclick = (e) => {
+                e.stopPropagation();
+                th = !th;
+                localStorage.setItem('_th', th ? 'light' : 'dark');
+                u()
+            };
+            c.onblur = () => {
+                c.contentEditable = "false";
+                document.body.classList.remove('_ed_m');
+                let t = c.textContent.replace(/[^\d]/g, '');
+                n = t === '' ? 0 : parseInt(t);
+                u()
+            };
+            document.addEventListener('fullscreenchange', () => {
+                if (document.fullscreenElement) document.body.classList.add('_fs_m');
+                else document.body.classList.remove('_fs_m')
+            });
+            u()
+        })()
+    </script>
+</body>
+</html>
 
