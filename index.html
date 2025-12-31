@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Sets the status bar color for mobile browsers -->
+    <meta name="theme-color" content="#050505">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title>THE MANIFESTO | THE UNSEEN LIFE</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -36,6 +39,7 @@
         /* Auto-hide header logic */
         nav {
             transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease;
+            background-color: #050505; /* Ensures the bar itself is black */
         }
         nav.nav-hidden {
             transform: translateY(-100%);
@@ -102,25 +106,27 @@
     <nav id="main-nav" class="fixed top-0 w-full z-50 p-8 flex justify-between items-center mix-blend-difference">
         <span class="font-display italic text-xl tracking-tighter">SF</span>
         <div class="text-right">
-            <div id="live-time" class="text-[11px] font-sans tracking-[0.2em] font-medium uppercase">00:00 PM</div>
-            <div id="live-date" class="text-[9px] uppercase tracking-[0.4em] opacity-40">DEC 31 / 2025</div>
+            <div id="live-time" class="text-[11px] font-sans tracking-[0.2em] font-medium uppercase text-white">00:00 PM</div>
+            <div id="live-date" class="text-[9px] uppercase tracking-[0.4em] opacity-40 text-white">DEC 31 / 2025</div>
         </div>
     </nav>
 
     <!-- Intro -->
     <section class="min-h-screen flex flex-col items-center justify-center px-6 relative z-10">
+        <div class="h-20"></div>
+        
         <div class="text-center flex-grow flex flex-col justify-center">
             <span id="topic-meta" class="text-[10px] uppercase tracking-[0.6em] text-gold-dust mb-8 block reveal">PROTOCOL</span>
             <h1 id="hero-title" class="font-display text-8xl md:text-[14rem] italic tracking-tighter leading-none reveal" style="transition-delay: 0.2s;">
                 The <span class="text-white not-italic">Loading</span>
             </h1>
             <p id="hero-sub" class="font-sans text-[10px] uppercase tracking-[0.4em] mt-8 opacity-30 reveal" style="transition-delay: 0.4s;">
-                Preparing your daily directive.
+                Preparing your yearly directive.
             </p>
         </div>
 
         <!-- Scroll Indicator -->
-        <div class="pb-10 reveal" style="transition-delay: 0.8s;">
+        <div class="pb-32 reveal" style="transition-delay: 0.8s;">
             <div class="flex flex-col items-center gap-4 opacity-40">
                 <span class="text-[8px] uppercase tracking-[0.8em]">Scroll Down</span>
                 <div class="scroll-hint">
@@ -140,10 +146,10 @@
         <h3 class="font-display text-6xl md:text-8xl italic mb-12 high-contrast">New Wisdom Daily.</h3>
         <div class="w-24 h-px bg-gold-dust mb-12"></div>
         <div class="text-[10px] uppercase tracking-[0.5em] text-gray-600 mb-4">
-            100 Days of Unique Protocols • Updates Every 24 Hours
+            365 Days of Unique Protocols • A Full Year of Focus
         </div>
         <div class="text-[10px] uppercase tracking-[0.3em] text-gray-800">
-            Salman Faris • Sovereign Year
+            Salman Faris • Sovereign Year 2026
         </div>
         <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="mt-20 text-gold-dust hover:text-white transition-colors">
             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
@@ -181,29 +187,30 @@
             lastScroll = currentScroll;
         });
 
-        // 3. 100-TOPIC GENERATOR ENGINE
-        const nouns = ["Ghost", "Obsidian", "Sovereign", "Shadow", "Monolith", "Vanguard", "Architect", "Titan", "Phantom", "Summit", "Void", "Engine", "Pulse", "Citadel", "Oracle", "Static", "Zenith", "Nadir", "Echo", "Steel", "Anchor", "Flow", "Impact", "Silence", "Will", "Fire", "Stone", "Wind", "Aura", "Core", "Drift", "Prism", "Edge", "Frame", "Nexus", "Root", "Stem", "Vertex", "Grit", "Flow", "Breath", "Logic", "Force", "Path", "Gaze", "Hand", "Eyes", "Skin", "Bone", "Soul"];
-        const themes = ["Discipline", "Focus", "Silence", "Strength", "Solitude", "Action", "Mindset", "Wealth", "Health", "Stoicism", "Minimalism", "Purity", "Gravity", "Velocity", "Power", "Truth", "Legacy", "Origin", "Reason", "Habit"];
+        // 3. 365-TOPIC GENERATOR ENGINE
+        const nouns = ["Ghost", "Obsidian", "Sovereign", "Shadow", "Monolith", "Vanguard", "Architect", "Titan", "Phantom", "Summit", "Void", "Engine", "Pulse", "Citadel", "Oracle", "Static", "Zenith", "Nadir", "Echo", "Steel", "Anchor", "Flow", "Impact", "Silence", "Will", "Fire", "Stone", "Wind", "Aura", "Core", "Drift", "Prism", "Edge", "Frame", "Nexus", "Root", "Stem", "Vertex", "Grit", "Flow", "Breath", "Logic", "Force", "Path", "Gaze", "Hand", "Eyes", "Skin", "Bone", "Soul", "Veil", "Crown", "Throne", "Spark", "Omen", "Sentry", "Crypt", "Bolt", "Iron", "Glint", "Depth", "High", "Low", "Wide", "Dark", "Light", "Pure", "Rare", "Old", "New", "True", "Deep", "Cold", "Hard", "Fast", "Slow", "Last"];
+        const themes = ["Discipline", "Focus", "Silence", "Strength", "Solitude", "Action", "Mindset", "Wealth", "Health", "Stoicism", "Minimalism", "Purity", "Gravity", "Velocity", "Power", "Truth", "Legacy", "Origin", "Reason", "Habit", "Intent", "Rigor", "Vision", "Duty", "Honor", "Dignity", "Order", "Chaos", "Mercy", "Resolve", "Faith", "Pride", "Fear", "Love", "Pain"];
         
         function generateProtocols(count) {
             const list = [];
-            for (let i = 1; i <= count; i++) {
+            for (let i = 0; i < count; i++) {
                 const n1 = nouns[i % nouns.length];
                 const t1 = themes[i % themes.length];
+                const dayNum = i + 1;
                 list.push({
                     title: n1,
-                    meta: `PROTOCOL ${String(i).padStart(3, '0')}: ${t1.toUpperCase()}`,
-                    sub: `Day ${i} of the relentless pursuit.`,
-                    p1: `Everything in this world is designed to steal your focus. From the notifications on your screen to the noise in your street. True ${t1} begins when you shut the world out and look within.`,
-                    p2: `Delete the noise. Burn the validation. Success is a quiet room and a focused mind. You don't need to be seen until the work is done. Let your progress remain a secret until it becomes undeniable.`,
-                    p3: `The path of ${n1} is not for the faint of heart. It requires the sacrifice of your comfort. It demands that you work when you are tired and speak only when it is necessary.`,
-                    p4: `Stop wasting your hours on the feed. Your legacy is being written right now. If you don't choose your path, the world will choose a mediocre one for you. Reclaim your time.`
+                    meta: `PROTOCOL ${String(dayNum).padStart(3, '0')}: ${t1.toUpperCase()}`,
+                    sub: `Step ${dayNum} of 365. The transformation continues.`,
+                    p1: `This year is a blank canvas, but most will smudge it with the fingerprints of others. True ${t1} is the refusal to let the digital noise dictate your internal tempo. You are the conductor.`,
+                    p2: `Delete the apps that drain you. Silence the voices that don't build you. The scroll is a drug, and attention is the currency you are throwing away. Reclaim it today. Stay in the shadows until you are ready to shine.`,
+                    p3: `The path of the ${n1} is forged in the hours nobody sees. It is the workout at 5 AM. It is the reading at midnight. It is the choice to say 'no' to temporary pleasure for the sake of permanent growth.`,
+                    p4: `Hard work is the only honest response to the gift of life. Do not waste another 24 hours. Move with purpose, speak with intent, and build a reality that requires no filters to be beautiful.`
                 });
             }
             return list;
         }
 
-        const allProtocols = generateProtocols(100);
+        const allProtocols = generateProtocols(365);
 
         function loadDailyContent() {
             const now = new Date();
@@ -212,7 +219,7 @@
             const oneDay = 1000 * 60 * 60 * 24;
             const dayOfYear = Math.floor(diff / oneDay);
             
-            const index = dayOfYear % 100;
+            const index = dayOfYear % 365;
             const data = allProtocols[index];
 
             document.getElementById('topic-meta').textContent = data.meta;
